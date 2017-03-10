@@ -43,7 +43,7 @@ namespace se3314_assignment2
 
         public void SetClientText(string s)
         {
-            clientBox.AppendText(s + Environment.NewLine + Environment.NewLine);
+            clientBox.AppendText(s + Environment.NewLine);
         }
 
         public void SendRTPHeaders(string data)
@@ -84,9 +84,9 @@ namespace se3314_assignment2
         private void button5_Click(object sender, EventArgs e)
         {
             SetupButton.Enabled = true;
-            PlayButton.Enabled = true;
-            TeardownButton.Enabled = true;
-            PauseButton.Enabled = true;
+            PlayButton.Enabled = false;
+            TeardownButton.Enabled = false;
+            PauseButton.Enabled = false;
             button5.Enabled = false; //connect button
         }
 
@@ -103,6 +103,10 @@ namespace se3314_assignment2
         private void SetupButton_Click(object sender, EventArgs e)
         {
             _controller.SetUpSelected();
+            SetupButton.Enabled = false;
+            PlayButton.Enabled = true;
+            PauseButton.Enabled = true;
+            TeardownButton.Enabled = true;
         }
 
         private void PlayButton_Click(object sender, EventArgs e)
@@ -118,6 +122,10 @@ namespace se3314_assignment2
         private void TeardownButton_Click(object sender, EventArgs e)
         {
             _controller.TearDownSelected();
+            SetupButton.Enabled = true;
+            PlayButton.Enabled = false;
+            PauseButton.Enabled = false;
+            TeardownButton.Enabled = false;
         }
 
         //print rtp header check box

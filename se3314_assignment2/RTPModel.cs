@@ -61,6 +61,11 @@ namespace se3314_assignment2
             }
         }
 
+        public void TerminateConnection()
+        {
+            UDPSocket.Close();
+        }
+
         public byte[] GetData()
         {
             return data;

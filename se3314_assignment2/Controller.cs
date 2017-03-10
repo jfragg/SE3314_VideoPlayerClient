@@ -110,7 +110,14 @@ namespace se3314_assignment2
             string request = "TEARDOWN rtsp://" + IPAddr + ":" + port + "/" + videoName + " RTSP/1.0\nCSeq: " + sequenceNo + "\nSession: " + sessionID;
             _rtsp.SendRequest(request);
             string response = _rtsp.GetResponse();
-            _view.SetServerText(response);
+
+            if (response != "")
+            {
+                _view.SetClientText("New RTSP State: WAITING");
+                _view.SetServerText(response);
+                timer.Stop();
+                _rtp.TerminateConnection();
+            }
         }
 
         public void DisplayFrames(Object source, System.Timers.ElapsedEventArgs e)
