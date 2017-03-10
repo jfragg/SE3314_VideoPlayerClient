@@ -14,11 +14,16 @@ namespace se3314_assignment2
     {
         private static Form1 _view;
         RTSPModel _rtsp;
+        RTPModel _rtp;
+
         int sequenceNo = 0;
         int sessionID;
         int port;
+
         string IPAddr;
         string videoName;
+
+        IPEndPoint localEndPoint;
 
         public void Connect_ButtonClick(object sender, EventArgs e)
         {
@@ -34,9 +39,14 @@ namespace se3314_assignment2
 
         public void SetUpSelected()
         {
+            localEndPoint = _rtsp.GetLocalEndpoint();
+            Console.WriteLine("PORT: " + localEndPoint.Port + ", IPAddr: " + localEndPoint.Address);
+
             sequenceNo++;
-            string request = "SETUP rtsp://" + IPAddr + ":" + port + "/" + videoName + " RTSP/1.0\nCSeq: " + sequenceNo + "\nTransport: RTP/UDP; client_port= 25000";
+
+            string request = "SETUP rtsp://" + IPAddr + ":" + port + "/" + videoName + " RTSP/1.0\nCSeq: " + sequenceNo + "\nTransport: RTP/UDP; client_port= " + localEndPoint.Port.ToString();
             _rtsp.SendRequest(request);
+
             string response = _rtsp.GetResponse();
             _view.SetServerText(response);
 
@@ -47,18 +57,25 @@ namespace se3314_assignment2
                 sessionID = Int32.Parse(words[7]);
                 Console.WriteLine(sessionID);
 
-                //prob have to setup some sh** here for RTP
-
+                _rtp = new RTPModel();
+                _rtp.CreateConnection(port, IPAddr);
             }
         }
 
         public void PlaySelected()
         {
             sequenceNo++;
+
             string request = "PLAY rtsp://" + IPAddr + ":" + port + "/" + videoName + " RTSP/1.0\nCSeq: " + sequenceNo + "\nSession: " + sessionID;
             _rtsp.SendRequest(request);
+
             string response = _rtsp.GetResponse();
             _view.SetServerText(response);
+
+            if(response != "")
+            {
+                
+            }
         }
 
         public void PauseSelected()

@@ -15,7 +15,6 @@ namespace se3314_assignment2
         Socket _sock;
         IPEndPoint connectEndPoint;
         IPAddress serverAddr;
-        IPAddress clientAddr;
 
         public RTSPModel(int port, string address)
         {
@@ -37,6 +36,11 @@ namespace se3314_assignment2
                     _sock.Close();
                 }
             }
+        }
+
+        public IPEndPoint GetLocalEndpoint()
+        {
+            return (IPEndPoint)_sock.LocalEndPoint;
         }
 
         public void SendRequest(string s)
