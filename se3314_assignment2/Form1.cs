@@ -77,5 +77,15 @@ namespace se3314_assignment2
         {
             _controller.PlaySelected();
         }
+
+        private void PauseButton_Click(object sender, EventArgs e)
+        {
+            _controller.PauseSelected();
+        }
+
+        private void TeardownButton_Click(object sender, EventArgs e)
+        {
+            _controller.TearDownSelected();
+        }
     }
 }

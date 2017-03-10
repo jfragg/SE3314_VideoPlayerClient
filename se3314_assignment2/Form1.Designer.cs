@@ -54,68 +54,76 @@
             // 
             // Port
             // 
-            this.Port.Location = new System.Drawing.Point(191, 28);
+            this.Port.Location = new System.Drawing.Point(96, 15);
+            this.Port.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Port.Name = "Port";
-            this.Port.Size = new System.Drawing.Size(100, 31);
+            this.Port.Size = new System.Drawing.Size(52, 20);
             this.Port.TabIndex = 0;
             this.Port.Text = "3000";
             // 
             // IPAddr
             // 
-            this.IPAddr.Location = new System.Drawing.Point(512, 28);
+            this.IPAddr.Location = new System.Drawing.Point(256, 15);
+            this.IPAddr.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.IPAddr.Name = "IPAddr";
-            this.IPAddr.Size = new System.Drawing.Size(143, 31);
+            this.IPAddr.Size = new System.Drawing.Size(74, 20);
             this.IPAddr.TabIndex = 1;
             this.IPAddr.Text = "127.0.0.1";
             // 
             // video
             // 
-            this.video.Location = new System.Drawing.Point(753, 28);
+            this.video.Location = new System.Drawing.Point(376, 15);
+            this.video.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.video.Name = "video";
-            this.video.Size = new System.Drawing.Size(100, 31);
+            this.video.Size = new System.Drawing.Size(52, 20);
             this.video.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 28);
+            this.label1.Location = new System.Drawing.Point(6, 15);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(173, 25);
+            this.label1.Size = new System.Drawing.Size(87, 13);
             this.label1.TabIndex = 3;
             this.label1.Text = "Connect to Port: ";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(315, 28);
+            this.label2.Location = new System.Drawing.Point(158, 15);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(191, 25);
+            this.label2.Size = new System.Drawing.Size(95, 13);
             this.label2.TabIndex = 4;
             this.label2.Text = "Server IP Address:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(674, 31);
+            this.label3.Location = new System.Drawing.Point(337, 16);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(73, 25);
+            this.label3.Size = new System.Drawing.Size(37, 13);
             this.label3.TabIndex = 5;
             this.label3.Text = "Video:";
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(12, 68);
+            this.pictureBox1.Location = new System.Drawing.Point(6, 35);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(850, 450);
+            this.pictureBox1.Size = new System.Drawing.Size(425, 234);
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             // 
             // SetupButton
             // 
             this.SetupButton.Enabled = false;
-            this.SetupButton.Location = new System.Drawing.Point(17, 534);
+            this.SetupButton.Location = new System.Drawing.Point(8, 278);
+            this.SetupButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SetupButton.Name = "SetupButton";
-            this.SetupButton.Size = new System.Drawing.Size(200, 94);
+            this.SetupButton.Size = new System.Drawing.Size(100, 49);
             this.SetupButton.TabIndex = 7;
             this.SetupButton.Text = "SETUP";
             this.SetupButton.UseVisualStyleBackColor = true;
@@ -124,9 +132,10 @@
             // PlayButton
             // 
             this.PlayButton.Enabled = false;
-            this.PlayButton.Location = new System.Drawing.Point(241, 534);
+            this.PlayButton.Location = new System.Drawing.Point(120, 278);
+            this.PlayButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.PlayButton.Name = "PlayButton";
-            this.PlayButton.Size = new System.Drawing.Size(198, 94);
+            this.PlayButton.Size = new System.Drawing.Size(99, 49);
             this.PlayButton.TabIndex = 8;
             this.PlayButton.Text = "PLAY";
             this.PlayButton.UseVisualStyleBackColor = true;
@@ -135,54 +144,62 @@
             // PauseButton
             // 
             this.PauseButton.Enabled = false;
-            this.PauseButton.Location = new System.Drawing.Point(460, 534);
+            this.PauseButton.Location = new System.Drawing.Point(230, 278);
+            this.PauseButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.PauseButton.Name = "PauseButton";
-            this.PauseButton.Size = new System.Drawing.Size(204, 94);
+            this.PauseButton.Size = new System.Drawing.Size(102, 49);
             this.PauseButton.TabIndex = 9;
             this.PauseButton.Text = "PAUSE";
             this.PauseButton.UseVisualStyleBackColor = true;
+            this.PauseButton.Click += new System.EventHandler(this.PauseButton_Click);
             // 
             // TeardownButton
             // 
             this.TeardownButton.Enabled = false;
-            this.TeardownButton.Location = new System.Drawing.Point(679, 534);
+            this.TeardownButton.Location = new System.Drawing.Point(340, 278);
+            this.TeardownButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.TeardownButton.Name = "TeardownButton";
-            this.TeardownButton.Size = new System.Drawing.Size(184, 94);
+            this.TeardownButton.Size = new System.Drawing.Size(92, 49);
             this.TeardownButton.TabIndex = 10;
             this.TeardownButton.Text = "TEARDOWN";
             this.TeardownButton.UseVisualStyleBackColor = true;
+            this.TeardownButton.Click += new System.EventHandler(this.TeardownButton_Click);
             // 
             // clientBox
             // 
-            this.clientBox.Location = new System.Drawing.Point(17, 663);
+            this.clientBox.Location = new System.Drawing.Point(8, 345);
+            this.clientBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.clientBox.Multiline = true;
             this.clientBox.Name = "clientBox";
-            this.clientBox.Size = new System.Drawing.Size(666, 234);
+            this.clientBox.Size = new System.Drawing.Size(335, 124);
             this.clientBox.TabIndex = 11;
             // 
             // serverBox
             // 
-            this.serverBox.Location = new System.Drawing.Point(17, 959);
+            this.serverBox.Location = new System.Drawing.Point(8, 499);
+            this.serverBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.serverBox.Multiline = true;
             this.serverBox.Name = "serverBox";
-            this.serverBox.Size = new System.Drawing.Size(666, 208);
+            this.serverBox.Size = new System.Drawing.Size(335, 110);
             this.serverBox.TabIndex = 12;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(21, 922);
+            this.label4.Location = new System.Drawing.Point(10, 479);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(184, 25);
+            this.label4.Size = new System.Drawing.Size(92, 13);
             this.label4.TabIndex = 13;
             this.label4.Text = "Server Response:";
             // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(689, 663);
+            this.checkBox1.Location = new System.Drawing.Point(344, 345);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(180, 29);
+            this.checkBox1.Size = new System.Drawing.Size(95, 17);
             this.checkBox1.TabIndex = 14;
             this.checkBox1.Text = "Packet Report";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -191,18 +208,20 @@
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(689, 708);
+            this.checkBox2.Location = new System.Drawing.Point(344, 368);
+            this.checkBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(164, 29);
+            this.checkBox2.Size = new System.Drawing.Size(85, 17);
             this.checkBox2.TabIndex = 15;
             this.checkBox2.Text = "Print Header";
             this.checkBox2.UseVisualStyleBackColor = true;
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(691, 959);
+            this.button5.Location = new System.Drawing.Point(346, 499);
+            this.button5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(162, 50);
+            this.button5.Size = new System.Drawing.Size(81, 26);
             this.button5.TabIndex = 16;
             this.button5.Text = "Connect";
             this.button5.UseVisualStyleBackColor = true;
@@ -210,9 +229,10 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(689, 1025);
+            this.button6.Location = new System.Drawing.Point(344, 533);
+            this.button6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(162, 50);
+            this.button6.Size = new System.Drawing.Size(81, 26);
             this.button6.TabIndex = 17;
             this.button6.Text = "Cancel";
             this.button6.UseVisualStyleBackColor = true;
@@ -220,9 +240,9 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(874, 1179);
+            this.ClientSize = new System.Drawing.Size(437, 548);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.checkBox2);
@@ -241,6 +261,7 @@
             this.Controls.Add(this.video);
             this.Controls.Add(this.IPAddr);
             this.Controls.Add(this.Port);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form1";
             this.Text = "SE3314_Client";
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();

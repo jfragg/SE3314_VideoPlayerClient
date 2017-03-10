@@ -54,17 +54,6 @@ namespace se3314_assignment2
             }
         }
 
-        /*        public string SendRequest(string s)
-        {
-            byte[] dataBuffer = new byte[4096];
-            byte[] rcvBuffer = new byte[4096];
-            dataBuffer = Encoding.UTF8.GetBytes(s);
-            _sock.Send(dataBuffer);
-            _sock.Receive(rcvBuffer);
-            return Encoding.UTF8.GetString(rcvBuffer);
-        }
-*/
-
         public string GetResponse()
         {
             byte[] rcvBuffer = new byte[4096];

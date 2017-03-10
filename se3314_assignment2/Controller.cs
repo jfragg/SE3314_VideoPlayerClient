@@ -60,5 +60,23 @@ namespace se3314_assignment2
             string response = _rtsp.GetResponse();
             _view.SetServerText(response);
         }
+
+        public void PauseSelected()
+        {
+            sequenceNo++;
+            string request = "PAUSE rtsp://" + IPAddr + ":" + port + "/" + videoName + " RTSP/1.0\nCSeq: " + sequenceNo + "\nSession: " + sessionID;
+            _rtsp.SendRequest(request);
+            string response = _rtsp.GetResponse();
+            _view.SetServerText(response);
+        }
+
+        public void TearDownSelected()
+        {
+            sequenceNo++;
+            string request = "TEARDOWN rtsp://" + IPAddr + ":" + port + "/" + videoName + " RTSP/1.0\nCSeq: " + sequenceNo + "\nSession: " + sessionID;
+            _rtsp.SendRequest(request);
+            string response = _rtsp.GetResponse();
+            _view.SetServerText(response);
+        }
     }
 }

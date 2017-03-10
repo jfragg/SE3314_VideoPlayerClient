@@ -7,3 +7,12 @@ c:\users\jonathanfragakis\documents\visual studio 2015\Projects\se3314_assignmen
 c:\users\jonathanfragakis\documents\visual studio 2015\Projects\se3314_assignment2\se3314_assignment2\obj\Debug\se3314_assignment2.csproj.GenerateResource.Cache
 c:\users\jonathanfragakis\documents\visual studio 2015\Projects\se3314_assignment2\se3314_assignment2\obj\Debug\se3314_assignment2.exe
 c:\users\jonathanfragakis\documents\visual studio 2015\Projects\se3314_assignment2\se3314_assignment2\obj\Debug\se3314_assignment2.pdb
+C:\Users\Jonathan\Desktop\SE3314_VideoPlayerClient\se3314_assignment2\bin\Debug\se3314_assignment2.exe.config
+C:\Users\Jonathan\Desktop\SE3314_VideoPlayerClient\se3314_assignment2\obj\Debug\se3314_assignment2.exe
+C:\Users\Jonathan\Desktop\SE3314_VideoPlayerClient\se3314_assignment2\obj\Debug\se3314_assignment2.pdb
+C:\Users\Jonathan\Desktop\SE3314_VideoPlayerClient\se3314_assignment2\bin\Debug\se3314_assignment2.exe
+C:\Users\Jonathan\Desktop\SE3314_VideoPlayerClient\se3314_assignment2\bin\Debug\se3314_assignment2.pdb
+C:\Users\Jonathan\Desktop\SE3314_VideoPlayerClient\se3314_assignment2\obj\Debug\se3314_assignment2.csprojResolveAssemblyReference.cache
+C:\Users\Jonathan\Desktop\SE3314_VideoPlayerClient\se3314_assignment2\obj\Debug\se3314_assignment2.Form1.resources
+C:\Users\Jonathan\Desktop\SE3314_VideoPlayerClient\se3314_assignment2\obj\Debug\se3314_assignment2.Properties.Resources.resources
+C:\Users\Jonathan\Desktop\SE3314_VideoPlayerClient\se3314_assignment2\obj\Debug\se3314_assignment2.csproj.GenerateResource.Cache
