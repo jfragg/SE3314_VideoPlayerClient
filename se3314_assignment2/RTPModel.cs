@@ -47,7 +47,6 @@ namespace se3314_assignment2
         {
             //size determined from checking incoming packet size from video server made in assignment 2 (roughly between >50000)
             byte[] encodedFrame = new byte[100000];
-            Console.WriteLine("RECEIVING PACKETS");
             try
             {
                 EndPoint endPoint = clientEndPoint;

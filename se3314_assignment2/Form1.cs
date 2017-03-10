@@ -13,13 +13,16 @@ namespace se3314_assignment2
     public partial class Form1 : Form
     {
         Controller _controller;
+        private bool displayHeader = false;
+        delegate void RTPHeaderDelegate(string data);
+        delegate void SetImageDelegate(Image image);
 
         public Form1()
         {
             InitializeComponent();
             _controller = new Controller();
             this.button5.Click += new System.EventHandler(_controller.Connect_ButtonClick);
-            //this.SetupButton.Click += new System.EventHandler(_controller.SetUpSelected);
+            videoScreen.SizeMode = PictureBoxSizeMode.StretchImage; //fits the image to the picture box perfectly
         }
 
         public int GetPort()
@@ -40,12 +43,41 @@ namespace se3314_assignment2
 
         public void SetClientText(string s)
         {
-            clientBox.AppendText(s + Environment.NewLine);
+            clientBox.AppendText(s + Environment.NewLine + Environment.NewLine);
+        }
+
+        public void SendRTPHeaders(string data)
+        {
+            if (this.clientBox.InvokeRequired)
+            {
+                RTPHeaderDelegate del = new RTPHeaderDelegate(SendRTPHeaders);
+                this.Invoke(del, data);
+            } else
+            {
+                this.clientBox.AppendText(data + Environment.NewLine);
+            }
+        }
+
+        public void DisplayImage(Image image)
+        {
+            if (this.videoScreen.InvokeRequired)
+            {
+                SetImageDelegate del = new SetImageDelegate(DisplayImage);
+                this.Invoke(del, new object[] { image });
+            } else
+            {
+                this.videoScreen.Image = image;
+            }
         }
 
         public void SetServerText(string s)
         {
             serverBox.AppendText(s + Environment.NewLine + Environment.NewLine);
+        }
+
+        public bool GetDisplayHeader()
+        {
+            return displayHeader;
         }
 
         //connect button click
@@ -86,6 +118,12 @@ namespace se3314_assignment2
         private void TeardownButton_Click(object sender, EventArgs e)
         {
             _controller.TearDownSelected();
+        }
+
+        //print rtp header check box
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            displayHeader = displayHeader ? false : true; //if displayHeader is already true set it to false if not set it to true
         }
     }
 }

@@ -17,6 +17,8 @@ namespace se3314_assignment2
             data = new byte[100000];
         }
 
+        //header will be the same as my asssignment 1 as this function is built off of how I created each packet in assignment 1
+        //there are some discrepencies with how Prof. Ouda created his header and the entire packet
         public byte[] GetHeader(byte [] packet)
         {
 

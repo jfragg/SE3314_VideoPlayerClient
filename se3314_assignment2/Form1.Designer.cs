@@ -36,7 +36,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.videoScreen = new System.Windows.Forms.PictureBox();
             this.SetupButton = new System.Windows.Forms.Button();
             this.PlayButton = new System.Windows.Forms.Button();
             this.PauseButton = new System.Windows.Forms.Button();
@@ -49,7 +49,7 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.videoScreen)).BeginInit();
             this.SuspendLayout();
             // 
             // Port
@@ -108,22 +108,22 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Video:";
             // 
-            // pictureBox1
+            // videoScreen
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(6, 35);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(425, 234);
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
+            this.videoScreen.Location = new System.Drawing.Point(6, 39);
+            this.videoScreen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.videoScreen.Name = "videoScreen";
+            this.videoScreen.Size = new System.Drawing.Size(425, 234);
+            this.videoScreen.TabIndex = 6;
+            this.videoScreen.TabStop = false;
             // 
             // SetupButton
             // 
             this.SetupButton.Enabled = false;
-            this.SetupButton.Location = new System.Drawing.Point(8, 278);
+            this.SetupButton.Location = new System.Drawing.Point(13, 277);
             this.SetupButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SetupButton.Name = "SetupButton";
-            this.SetupButton.Size = new System.Drawing.Size(100, 49);
+            this.SetupButton.Size = new System.Drawing.Size(100, 55);
             this.SetupButton.TabIndex = 7;
             this.SetupButton.Text = "SETUP";
             this.SetupButton.UseVisualStyleBackColor = true;
@@ -132,10 +132,10 @@
             // PlayButton
             // 
             this.PlayButton.Enabled = false;
-            this.PlayButton.Location = new System.Drawing.Point(120, 278);
+            this.PlayButton.Location = new System.Drawing.Point(117, 277);
             this.PlayButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.PlayButton.Name = "PlayButton";
-            this.PlayButton.Size = new System.Drawing.Size(99, 49);
+            this.PlayButton.Size = new System.Drawing.Size(99, 55);
             this.PlayButton.TabIndex = 8;
             this.PlayButton.Text = "PLAY";
             this.PlayButton.UseVisualStyleBackColor = true;
@@ -144,10 +144,10 @@
             // PauseButton
             // 
             this.PauseButton.Enabled = false;
-            this.PauseButton.Location = new System.Drawing.Point(230, 278);
+            this.PauseButton.Location = new System.Drawing.Point(227, 277);
             this.PauseButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.PauseButton.Name = "PauseButton";
-            this.PauseButton.Size = new System.Drawing.Size(102, 49);
+            this.PauseButton.Size = new System.Drawing.Size(102, 55);
             this.PauseButton.TabIndex = 9;
             this.PauseButton.Text = "PAUSE";
             this.PauseButton.UseVisualStyleBackColor = true;
@@ -156,10 +156,10 @@
             // TeardownButton
             // 
             this.TeardownButton.Enabled = false;
-            this.TeardownButton.Location = new System.Drawing.Point(340, 278);
+            this.TeardownButton.Location = new System.Drawing.Point(333, 277);
             this.TeardownButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.TeardownButton.Name = "TeardownButton";
-            this.TeardownButton.Size = new System.Drawing.Size(92, 49);
+            this.TeardownButton.Size = new System.Drawing.Size(92, 55);
             this.TeardownButton.TabIndex = 10;
             this.TeardownButton.Text = "TEARDOWN";
             this.TeardownButton.UseVisualStyleBackColor = true;
@@ -215,6 +215,7 @@
             this.checkBox2.TabIndex = 15;
             this.checkBox2.Text = "Print Header";
             this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
             // button5
             // 
@@ -242,7 +243,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(437, 548);
+            this.ClientSize = new System.Drawing.Size(437, 624);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.checkBox2);
@@ -254,7 +255,7 @@
             this.Controls.Add(this.PauseButton);
             this.Controls.Add(this.PlayButton);
             this.Controls.Add(this.SetupButton);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.videoScreen);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -265,7 +266,7 @@
             this.Name = "Form1";
             this.Text = "SE3314_Client";
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.videoScreen)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -280,7 +281,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox videoScreen;
         private System.Windows.Forms.Button SetupButton;
         private System.Windows.Forms.Button PlayButton;
         private System.Windows.Forms.Button PauseButton;

@@ -57,14 +57,14 @@ namespace se3314_assignment2
             _rtsp.SendRequest(request);
 
             string response = _rtsp.GetResponse();
-            _view.SetServerText(response);
 
             if(response != "")
             {
+                _view.SetServerText(response);
+                _view.SetClientText("New RTSP State: READY");
                 char[] separators = { ' ', ',', ';', ':', '/', '\n', '\r' };
                 string[] words = response.Split(separators, StringSplitOptions.RemoveEmptyEntries);
                 sessionID = Int32.Parse(words[7]);
-                Console.WriteLine(sessionID);
 
                 _rtp = new RTPModel();
                 _rtp.CreateConnection(localEndPoint.Port, IPAddr);
@@ -84,7 +84,7 @@ namespace se3314_assignment2
             if(response != "")
             {
                 _view.SetServerText(response);
-                Console.WriteLine("TIMER STARTED!");
+                _view.SetClientText("New RTSP State: PLAYING");
                 timer.Start();
             }
         }
@@ -95,10 +95,11 @@ namespace se3314_assignment2
             string request = "PAUSE rtsp://" + IPAddr + ":" + port + "/" + videoName + " RTSP/1.0\nCSeq: " + sequenceNo + "\nSession: " + sessionID;
             _rtsp.SendRequest(request);
             string response = _rtsp.GetResponse();
-            _view.SetServerText(response);
 
             if(response != "")
             {
+                _view.SetClientText("New RTSP State: PAUSED");
+                _view.SetServerText(response);
                 timer.Stop();
             }
         }
@@ -116,15 +117,38 @@ namespace se3314_assignment2
         {
             _rtp.ReceivePackets();
 
+            DisplayHeaderInformation();
+
+            byte[] data = _rtp.GetData();
+
+            if(data != null)
+            {
+                Console.WriteLine("WE GOT DATA!");
+                using (var memoryStream = new System.IO.MemoryStream(data))
+                {
+                    _view.DisplayImage(System.Drawing.Image.FromStream(memoryStream));
+                }
+            }
+           
+        }
+
+        private void DisplayHeaderInformation()
+        {
             byte[] headerData = _rtp.GetHeader();
 
-            string bits = "";
-            for(int i = 0; i < headerData.Length; i++)
+            if(headerData != null)
             {
-                bits += Convert.ToString(headerData[i], 2);
-            }
+                string bits = "";
+                for (int i = 0; i < headerData.Length; i++)
+                {
+                    bits += Convert.ToString(headerData[i], 2);
+                }
 
-            Console.WriteLine(bits);
+                if (_view.GetDisplayHeader())
+                {
+                    _view.SendRTPHeaders(bits);
+                }
+            }
         }
 
     }
