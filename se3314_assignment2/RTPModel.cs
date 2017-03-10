@@ -24,6 +24,7 @@ namespace se3314_assignment2
 
         public void CreateConnection(int port, string address)
         {
+            //must bind to a local end point 
             IPAddress serverAddress = IPAddress.Parse(address);
             clientEndPoint = new IPEndPoint(serverAddress, port);
 
@@ -44,13 +45,14 @@ namespace se3314_assignment2
 
         public void ReceivePackets()
         {
-
-            byte[] encodedFrame = new byte[4096];
-
+            //size determined from checking incoming packet size from video server made in assignment 2 (roughly between >50000)
+            byte[] encodedFrame = new byte[100000];
+            Console.WriteLine("RECEIVING PACKETS");
             try
             {
                 EndPoint endPoint = clientEndPoint;
                 UDPSocket.ReceiveFrom(encodedFrame, ref endPoint);
+
                 data = rtpHelper.GetData(encodedFrame);
                 header = rtpHelper.GetHeader(encodedFrame);
 

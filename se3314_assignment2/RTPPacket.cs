@@ -14,7 +14,7 @@ namespace se3314_assignment2
         public RTPPacket()
         {
             header = new byte[12];
-            data = new byte[4096];
+            data = new byte[100000];
         }
 
         public byte[] GetHeader(byte [] packet)

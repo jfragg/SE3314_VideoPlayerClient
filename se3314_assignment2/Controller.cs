@@ -15,6 +15,7 @@ namespace se3314_assignment2
         private static Form1 _view;
         RTSPModel _rtsp;
         RTPModel _rtp;
+        System.Timers.Timer timer;
 
         int sequenceNo = 0;
         int sessionID;
@@ -25,15 +26,23 @@ namespace se3314_assignment2
 
         IPEndPoint localEndPoint;
 
+        public Controller()
+        {
+            timer = new System.Timers.Timer();
+            timer.Elapsed += new System.Timers.ElapsedEventHandler(DisplayFrames);
+            timer.Interval = 150;
+        }
+
         public void Connect_ButtonClick(object sender, EventArgs e)
         {
             _view = (Form1)((Button)sender).FindForm();
-            Console.WriteLine("You are connected!");
+
             _view.SetClientText("You are connected!");
 
             IPAddr = _view.GetIPAddr();
             port = _view.GetPort();
             videoName = _view.GetVideoName();
+
             _rtsp = new RTSPModel(_view.GetPort(), _view.GetIPAddr());
         }
 
@@ -58,7 +67,8 @@ namespace se3314_assignment2
                 Console.WriteLine(sessionID);
 
                 _rtp = new RTPModel();
-                _rtp.CreateConnection(port, IPAddr);
+                _rtp.CreateConnection(localEndPoint.Port, IPAddr);
+
             }
         }
 
@@ -70,11 +80,12 @@ namespace se3314_assignment2
             _rtsp.SendRequest(request);
 
             string response = _rtsp.GetResponse();
-            _view.SetServerText(response);
 
             if(response != "")
             {
-                
+                _view.SetServerText(response);
+                Console.WriteLine("TIMER STARTED!");
+                timer.Start();
             }
         }
 
@@ -85,6 +96,11 @@ namespace se3314_assignment2
             _rtsp.SendRequest(request);
             string response = _rtsp.GetResponse();
             _view.SetServerText(response);
+
+            if(response != "")
+            {
+                timer.Stop();
+            }
         }
 
         public void TearDownSelected()
@@ -95,5 +111,21 @@ namespace se3314_assignment2
             string response = _rtsp.GetResponse();
             _view.SetServerText(response);
         }
+
+        public void DisplayFrames(Object source, System.Timers.ElapsedEventArgs e)
+        {
+            _rtp.ReceivePackets();
+
+            byte[] headerData = _rtp.GetHeader();
+
+            string bits = "";
+            for(int i = 0; i < headerData.Length; i++)
+            {
+                bits += Convert.ToString(headerData[i], 2);
+            }
+
+            Console.WriteLine(bits);
+        }
+
     }
 }
