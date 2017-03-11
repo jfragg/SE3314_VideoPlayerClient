@@ -126,9 +126,10 @@ namespace se3314_assignment2
             return showPacketInfo;
         }
 
+        //exit button
         private void button6_Click(object sender, EventArgs e)
         {
-
+            this.Close(); //close application
         }
 
         //call the set up function in controller 
