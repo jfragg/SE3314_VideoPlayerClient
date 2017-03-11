@@ -14,6 +14,9 @@ namespace se3314_assignment2
         private int seqNo;
         private int timestamp;
 
+        /// <summary>
+        /// initialize the header array and data array
+        /// </summary>
         public RTPPacket()
         {
             header = new byte[12];
@@ -28,37 +31,55 @@ namespace se3314_assignment2
             for(int i = 0; i < 12; i++)
             {
                 header[i] = packet[i];
-                Console.WriteLine("Header[" + i + "] = " + header[i]);
 
                 //Index[1] = Payload Type 
                 //Index[3] = Sequence Number
                 //Index[4-7] = timestamp
             }
 
-            payload = header[1];
-            seqNo = header[3];
-            timestamp = (header[4] * 100000) + (header[5] * 10000) + (header[6] * 1000) + (header[7]);
+            payload = header[1]; //get the payload number
+            seqNo = header[3]; //get the sequence number
+            timestamp = (header[4] * 100000) + (header[5] * 10000) + (header[6] * 1000) + (header[7]); //add up the values of the timestamp bytes
+            //not 100% sure if this is actually correct but that's my take away so hopefully it is :) 
 
             return header;
         }
 
+        /// <summary>
+        /// Get the payload from header
+        /// </summary>
+        /// <returns></returns>
         public int GetPayload()
         {
             return payload;
         }
 
+        /// <summary>
+        /// Get the sequence number from header
+        /// </summary>
+        /// <returns></returns>
         public int GetSeqNo()
         {
             return seqNo;
         }
 
+        /// <summary>
+        /// Get the time stamp from header
+        /// </summary>
+        /// <returns></returns>
         public int GetTimeStamp()
         {
             return timestamp;
         }
 
+        /// <summary>
+        /// Store the frame into the data array
+        /// </summary>
+        /// <param name="packet"></param>
+        /// <returns></returns>
         public byte[] GetData(byte [] packet)
         {
+            //start at 12 to ignore the 12 bytes designated for the header
             for(int i = 12; i < packet.Length; i++)
             {
                 data[i - 12] = packet[i];
