@@ -14,7 +14,9 @@ namespace se3314_assignment2
     {
         Controller _controller;
         private bool displayHeader = false;
+        private bool showPacketInfo = false;
         delegate void RTPHeaderDelegate(string data);
+        delegate void ShowDataInfoDelegate(string data);
         delegate void SetImageDelegate(Image image);
 
         public Form1()
@@ -58,6 +60,19 @@ namespace se3314_assignment2
             }
         }
 
+        public void ShowDataInfo(string data)
+        {
+            if (this.clientBox.InvokeRequired)
+            {
+                ShowDataInfoDelegate del = new ShowDataInfoDelegate(ShowDataInfo);
+                this.Invoke(del, data);
+            }
+            else
+            {
+                this.clientBox.AppendText(data + Environment.NewLine);
+            }
+        }
+
         public void DisplayImage(Image image)
         {
             if (this.videoScreen.InvokeRequired)
@@ -92,7 +107,12 @@ namespace se3314_assignment2
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
+            showPacketInfo = showPacketInfo ? false : true;
+        }
 
+        public bool GetShowPacketInfo()
+        {
+            return showPacketInfo;
         }
 
         private void button6_Click(object sender, EventArgs e)

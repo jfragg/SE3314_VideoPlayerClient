@@ -116,6 +116,7 @@ namespace se3314_assignment2
                 _view.SetClientText("New RTSP State: WAITING");
                 _view.SetServerText(response);
                 timer.Stop();
+                sequenceNo = 0; //reset rtsp sequence number 
                 _rtp.TerminateConnection();
             }
         }
@@ -125,6 +126,7 @@ namespace se3314_assignment2
             _rtp.ReceivePackets();
 
             DisplayHeaderInformation();
+            DisplayPacketReport();
 
             byte[] data = _rtp.GetData();
 
@@ -137,6 +139,19 @@ namespace se3314_assignment2
                 }
             }
            
+        }
+
+        private void DisplayPacketReport()
+        {
+            int payload = _rtp.GetPayload();
+            int timestamp = _rtp.GetTimeStamp();
+            int seqNo = _rtp.GetSeqNo();
+
+            if (_view.GetShowPacketInfo())
+            {
+                string info = "Got RTP packet with SeqNo #" + seqNo + ", TimeStamp " + timestamp + " ms, of type " + payload;
+                _view.ShowDataInfo(info);
+            }
         }
 
         private void DisplayHeaderInformation()

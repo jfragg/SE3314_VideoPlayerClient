@@ -40,7 +40,6 @@ namespace se3314_assignment2
                     UDPSocket.Close();
                 }
             }
-
         }
 
         public void ReceivePackets()
@@ -76,5 +75,19 @@ namespace se3314_assignment2
             return header;
         }
 
+        public int GetPayload()
+        {
+            return rtpHelper.GetPayload();
+        }
+
+        public int GetTimeStamp()
+        {
+            return rtpHelper.GetTimeStamp();
+        }
+
+        public int GetSeqNo()
+        {
+            return rtpHelper.GetSeqNo();
+        }
     }
 }

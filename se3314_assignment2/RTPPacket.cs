@@ -10,6 +10,9 @@ namespace se3314_assignment2
     {
         private byte[] header;
         private byte[] data;
+        private int payload;
+        private int seqNo;
+        private int timestamp;
 
         public RTPPacket()
         {
@@ -25,9 +28,33 @@ namespace se3314_assignment2
             for(int i = 0; i < 12; i++)
             {
                 header[i] = packet[i];
+                Console.WriteLine("Header[" + i + "] = " + header[i]);
+
+                //Index[1] = Payload Type 
+                //Index[3] = Sequence Number
+                //Index[4-7] = timestamp
             }
 
+            payload = header[1];
+            seqNo = header[3];
+            timestamp = (header[4] * 100000) + (header[5] * 10000) + (header[6] * 1000) + (header[7]);
+
             return header;
+        }
+
+        public int GetPayload()
+        {
+            return payload;
+        }
+
+        public int GetSeqNo()
+        {
+            return seqNo;
+        }
+
+        public int GetTimeStamp()
+        {
+            return timestamp;
         }
 
         public byte[] GetData(byte [] packet)
